@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d1f0d">
+<title>Instalar 💢Famintos💢</title>
+<meta property="og:title" content="💢Famintos💢 — Lista de mercado da família">
+<meta property="og:description" content="Instale o app de lista de mercado da família. Funciona no iPhone e Android!">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#0a180a;
+  --surface:#111f11;
+  --surface2:#182818;
+  --border:#233223;
+  --green:#4caf50;
+  --green-light:#81c784;
+  --green-pale:#c8e6c9;
+  --text:#e8f5e9;
+  --muted:#6a926a;
+  --accent:#a5d6a7;
+  --red:#ff5252;
+  --orange:#ffb74d;
+}
+
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── GRAIN ── */
+body::after{
+  content:"";
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:999;opacity:.35;
+}
+
+/* ── HERO ── */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:60px 24px 40px;
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+}
+
+/* Animated radial glow */
+.hero::before{
+  content:"";
+  position:absolute;
+  width:600px;height:600px;
+  background:radial-gradient(circle, rgba(76,175,80,0.12) 0%, transparent 70%);
+  top:50%;left:50%;
+  transform:translate(-50%,-60%);
+  animation:breathe 6s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes breathe{
+  0%,100%{transform:translate(-50%,-60%) scale(1);}
+  50%{transform:translate(-50%,-60%) scale(1.15);}
+}
+
+/* Floating particles */
+.particle{
+  position:absolute;
+  border-radius:50%;
+  background:var(--green);
+  opacity:0;
+  animation:float-up linear infinite;
+}
+@keyframes float-up{
+  0%{opacity:0;transform:translateY(0) scale(0);}
+  10%{opacity:.3;}
+  90%{opacity:.1;}
+  100%{opacity:0;transform:translateY(-80vh) scale(1);}
+}
+
+.icon-wrap{
+  position:relative;
+  margin-bottom:28px;
+  animation:pop-in 0.7s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes pop-in{
+  from{opacity:0;transform:scale(0.5) rotate(-10deg);}
+  to{opacity:1;transform:scale(1) rotate(0deg);}
+}
+
+.app-icon{
+  width:120px;height:120px;
+  border-radius:26px;
+  background:linear-gradient(135deg,#1a3a1a,#0d1f0d);
+  border:1.5px solid #2a4a2a;
+  display:flex;align-items:center;justify-content:center;
+  font-size:64px;
+  box-shadow:0 20px 60px rgba(76,175,80,0.25), 0 0 0 1px rgba(76,175,80,0.1);
+  position:relative;
+  overflow:hidden;
+}
+.app-icon::after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.08) 0%,transparent 50%);
+  border-radius:inherit;
+}
+
+/* Shine ping */
+.ping{
+  position:absolute;
+  inset:-4px;
+  border-radius:30px;
+  border:1.5px solid var(--green);
+  opacity:0;
+  animation:ping 3s ease-out 1.2s infinite;
+}
+@keyframes ping{
+  0%{opacity:.6;transform:scale(1);}
+  100%{opacity:0;transform:scale(1.3);}
+}
+
+h1{
+  font-family:'Fraunces',serif;
+  font-size:clamp(2.4rem,8vw,4rem);
+  font-weight:900;
+  color:var(--green-light);
+  letter-spacing:-0.03em;
+  line-height:1;
+  margin-bottom:12px;
+  animation:fade-up .6s .15s ease both;
+}
+
+.tagline{
+  font-size:1rem;
+  color:var(--muted);
+  max-width:280px;
+  line-height:1.5;
+  animation:fade-up .6s .25s ease both;
+}
+@keyframes fade-up{
+  from{opacity:0;transform:translateY(16px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.badges{
+  display:flex;gap:8px;margin-top:20px;flex-wrap:wrap;justify-content:center;
+  animation:fade-up .6s .35s ease both;
+}
+.badge{
+  font-size:.7rem;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:4px 12px;
+  color:var(--accent);
+  letter-spacing:.04em;
+}
+
+.cta-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,#2e7d32,#4caf50);
+  color:white;
+  border:none;border-radius:16px;
+  padding:16px 32px;
+  font-family:'DM Sans',sans-serif;
+  font-size:1rem;font-weight:500;
+  cursor:pointer;
+  text-decoration:none;
+  margin-top:32px;
+  box-shadow:0 8px 30px rgba(76,175,80,.35);
+  transition:all .2s;
+  animation:fade-up .6s .45s ease both;
+}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(76,175,80,.45);}
+.cta-btn:active{transform:translateY(0);}
+
+.scroll-hint{
+  position:absolute;bottom:28px;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  color:var(--muted);font-size:.75rem;
+  animation:fade-up .6s .8s ease both;
+}
+.chevrons{display:flex;flex-direction:column;align-items:center;gap:2px;}
+.chevrons span{
+  display:block;width:10px;height:10px;
+  border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);
+  transform:rotate(45deg);
+  animation:chev .9s ease-in-out infinite;
+}
+.chevrons span:nth-child(2){animation-delay:.15s;opacity:.6;}
+.chevrons span:nth-child(3){animation-delay:.3s;opacity:.3;}
+@keyframes chev{0%,100%{opacity:.8;}50%{opacity:.2;}}
+
+/* ── SECTION ── */
+section{
+  max-width:480px;margin:0 auto;
+  padding:48px 20px;
+}
+
+.section-label{
+  font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:8px;
+}
+
+.section-title{
+  font-family:'Fraunces',serif;
+  font-size:1.8rem;font-weight:700;
+  color:var(--green-light);
+  margin-bottom:28px;
+  line-height:1.2;
+}
+
+/* ── OS SELECTOR ── */
+.os-tabs{
+  display:flex;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:4px;
+  margin-bottom:28px;
+  gap:4px;
+}
+.os-tab{
+  flex:1;padding:10px;
+  border:none;border-radius:10px;
+  background:none;cursor:pointer;
+  font-family:'DM Sans',sans-serif;font-size:.9rem;
+  color:var(--muted);
+  transition:all .2s;
+  display:flex;align-items:center;justify-content:center;gap:7px;
+}
+.os-tab.active{
+  background:var(--surface2);
+  color:var(--green-light);
+  border:1px solid var(--border);
+  box-shadow:0 2px 8px rgba(0,0,0,.3);
+}
+
+/* ── STEPS ── */
+.steps{display:flex;flex-direction:column;gap:0;}
+
+.step{
+  display:flex;gap:16px;
+  padding:20px 0;
+  border-bottom:1px solid var(--border);
+  opacity:0;
+  transform:translateX(-12px);
+  transition:opacity .4s, transform .4s;
+}
+.step.visible{opacity:1;transform:translateX(0);}
+.step:last-child{border-bottom:none;}
+
+.step-num{
+  flex-shrink:0;
+  width:36px;height:36px;
+  border-radius:10px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;
+  font-size:1rem;font-weight:700;
+  color:var(--green-light);
+  margin-top:2px;
+}
+
+.step-body{}
+.step-title{
+  font-weight:500;font-size:.95rem;
+  color:var(--text);margin-bottom:4px;
+}
+.step-desc{
+  font-size:.83rem;color:var(--muted);line-height:1.5;
+}
+.step-img{
+  margin-top:10px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:14px 16px;
+  font-size:.8rem;
+  color:var(--accent);
+  display:flex;align-items:center;gap:10px;
+}
+.step-img .icon{font-size:1.4rem;}
+
+/* Highlight pill */
+.hl{
+  display:inline-block;
+  background:#1b3a1b;
+  border:1px solid #2a4a2a;
+  border-radius:6px;
+  padding:1px 7px;
+  color:var(--green-pale);
+  font-size:.8em;
+  font-family:'Fraunces',serif;
+  white-space:nowrap;
+}
+
+/* ── DIVIDER ── */
+.divider{
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--border), transparent);
+  margin:0 20px;
+}
+
+/* ── SHARE SECTION ── */
+.share-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:24px;
+  position:relative;
+  overflow:hidden;
+}
+.share-card::before{
+  content:"";
+  position:absolute;top:-40px;right:-40px;
+  width:150px;height:150px;
+  background:radial-gradient(circle,rgba(76,175,80,.08),transparent 70%);
+  pointer-events:none;
+}
+
+.link-box{
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px 14px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:10px;
+  margin:16px 0;
+}
+.link-text{
+  font-family:'Fraunces',serif;
+  font-size:.9rem;
+  color:var(--green-light);
+  word-break:break-all;
+  flex:1;
+}
+.copy-btn{
+  flex-shrink:0;
+  background:var(--green);
+  color:white;border:none;
+  border-radius:8px;padding:6px 14px;
+  font-size:.8rem;cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  transition:all .2s;
+}
+.copy-btn:hover{background:#66bb6a;}
+.copy-btn.copied{background:#388e3c;}
+
+.whatsapp-btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;
+  background:linear-gradient(135deg,#1b5e20,#2e7d32);
+  color:white;border:none;border-radius:14px;
+  padding:14px 20px;
+  font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:500;
+  cursor:pointer;
+  text-decoration:none;
+  transition:all .2s;
+  margin-top:8px;
+  box-shadow:0 4px 20px rgba(46,125,50,.3);
+}
+.whatsapp-btn:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(46,125,50,.4);}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;padding:40px 20px 60px;
+  color:var(--muted);font-size:.75rem;line-height:1.8;
+}
+
+/* ── TOAST ── */
+#toast{
+  position:fixed;bottom:30px;left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:#2d6a2d;color:white;
+  padding:10px 22px;border-radius:20px;
+  font-size:.85rem;opacity:0;
+  transition:all .3s;z-index:9999;
+  pointer-events:none;white-space:nowrap;
+  box-shadow:0 4px 20px rgba(0,0,0,.4);
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* Animations on scroll */
+.reveal{
+  opacity:0;transform:translateY(20px);
+  transition:opacity .5s, transform .5s;
+}
+.reveal.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- Floating particles -->
+<script>
+(function(){
+  for(let i=0;i<12;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const size=Math.random()*4+2;
+    p.style.cssText=`
+      width:${size}px;height:${size}px;
+      left:${Math.random()*100}vw;
+      bottom:${Math.random()*20}vh;
+      animation-duration:${8+Math.random()*12}s;
+      animation-delay:${Math.random()*8}s;
+    `;
+    document.body.appendChild(p);
+  }
+})();
+</script>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="icon-wrap">
+    <div class="app-icon">🛒</div>
+    <div class="ping"></div>
+  </div>
+  <h1>💢Famintos💢</h1>
+  <p class="tagline">A lista de mercado da família — sempre sincronizada, sempre no bolso.</p>
+  <div class="badges">
+    <span class="badge">✦ iPhone</span>
+    <span class="badge">✦ Android</span>
+    <span class="badge">✦ Gratuito</span>
+    <span class="badge">✦ Tempo real</span>
+  </div>
+  <a class="cta-btn" href="https://tz4r.github.io/Famintos/" target="_blank">
+    🚀 Abrir o App
+  </a>
+  <div class="scroll-hint">
+    <span>Como instalar</span>
+    <div class="chevrons">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ INSTALL SECTION ══ -->
+<section>
+  <p class="section-label reveal">Instalação</p>
+  <h2 class="section-title reveal">Adicione à tela<br>do seu celular</h2>
+
+  <!-- OS Tabs -->
+  <div class="os-tabs reveal">
+    <button class="os-tab active" id="tab-ios" onclick="switchTab('ios')"> iPhone (iOS)</button>
+    <button class="os-tab" id="tab-android" onclick="switchTab('android')">🤖 Android</button>
+  </div>
+
+  <!-- iOS Steps -->
+  <div class="steps" id="steps-ios">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Abra no Safari</div>
+        <div class="step-desc">O iPhone exige o <strong>Safari</strong> para instalar apps na tela inicial. Não funciona pelo Chrome ou outro navegador.</div>
+        <div class="step-img"><span class="icon">🧭</span> Abra o Safari e acesse o link do app</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">Toque em Compartilhar</div>
+        <div class="step-desc">Na barra inferior do Safari, toque no ícone de <span class="hl">⬆️ Compartilhar</span> (caixa com seta pra cima).</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Adicionar à Tela de Início</div>
+        <div class="step-desc">Role a lista de opções para baixo e toque em <span class="hl">Adicionar à Tela de Início</span>.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-title">Confirme o nome</div>
+        <div class="step-desc">O nome <span class="hl">💢Famintos💢</span> já vem preenchido. Toque em <span class="hl">Adicionar</span> no canto superior direito.</div>
+        <div class="step-img"><span class="icon">✅</span> Pronto! O ícone aparece na sua tela inicial.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Android Steps -->
+  <div class="steps" id="steps-android" style="display:none;">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Abra no Chrome</div>
+        <div class="step-desc">No Android, use o <strong>Google Chrome</strong>. Acesse o link do app pelo navegador.</div>
+        <div class="step-img"><span class="icon">🌐</span> Abra o Chrome e cole o link do app</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">Menu de opções</div>
+        <div class="step-desc">Toque nos <span class="hl">⋮ três pontos</span> no canto superior direito do Chrome.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Adicionar à tela inicial</div>
+        <div class="step-desc">Toque em <span class="hl">Adicionar à tela inicial</span> ou <span class="hl">Instalar app</span> (o nome varia por versão do Chrome).</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-title">Confirme</div>
+        <div class="step-desc">Toque em <span class="hl">Adicionar</span> na janela que aparecer. O ícone vai para a tela inicial automaticamente.</div>
+        <div class="step-img"><span class="icon">✅</span> Pronto! Funciona como um app de verdade.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ SHARE SECTION ══ -->
+<section>
+  <p class="section-label reveal">Compartilhar</p>
+  <h2 class="section-title reveal">Mande para<br>a família</h2>
+
+  <div class="share-card reveal">
+    <p style="font-size:.85rem;color:var(--muted);margin-bottom:4px;">Link do app:</p>
+    <div class="link-box">
+      <span class="link-text">https://tz4r.github.io/Famintos/</span>
+      <button class="copy-btn" id="copyBtn" onclick="copyLink()">Copiar</button>
+    </div>
+
+    <a class="whatsapp-btn"
+       href="https://wa.me/?text=Oi!%20Instala%20o%20%F0%9F%92%A2Famintos%F0%9F%92%A2%2C%20nossa%20lista%20de%20mercado%20compartilhada!%20%F0%9F%9B%92%0A%0AClica%20aqui%20para%20abrir%3A%20https%3A%2F%2Ftz4r.github.io%2FFamintos%2F%0A%0ADepois%20de%20abrir%2C%20salva%20na%20tela%20inicial%20como%20um%20app!%20%F0%9F%93%B2"
+       target="_blank">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Enviar pelo WhatsApp
+    </a>
+
+    <p style="font-size:.75rem;color:var(--muted);margin-top:14px;text-align:center;line-height:1.6;">
+      Quem receber o link pode entrar na mesma lista usando o <strong style="color:var(--accent);">código de 6 letras</strong> que aparece no topo do app.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div style="font-size:1.8rem;margin-bottom:8px;">💢</div>
+  <strong style="color:var(--accent);">Famintos</strong><br>
+  Feito com 🥦 para a família<br>
+  <span style="font-size:.7rem;opacity:.5;">App gratuito • Sem anúncios • Funciona offline</span>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+// Tab switching
+function switchTab(os) {
+  document.getElementById('tab-ios').classList.toggle('active', os==='ios');
+  document.getElementById('tab-android').classList.toggle('active', os==='android');
+  document.getElementById('steps-ios').style.display = os==='ios' ? 'flex' : 'none';
+  document.getElementById('steps-android').style.display = os==='android' ? 'flex' : 'none';
+  animateSteps();
+}
+
+// Copy link
+function copyLink() {
+  navigator.clipboard.writeText('https://tz4r.github.io/Famintos/').then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = 'Copiado!';
+    btn.classList.add('copied');
+    showToast('Link copiado! Cole no WhatsApp ✓');
+    setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+// Toast
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// Intersection observer for animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal, .step').forEach(el => observer.observe(el));
+
+function animateSteps() {
+  document.querySelectorAll('.step').forEach((el, i) => {
+    el.classList.remove('visible');
+    setTimeout(() => el.classList.add('visible'), i * 80);
+  });
+}
+
+// Auto-detect iOS/Android
+window.addEventListener('load', () => {
+  const isAndroid = /android/i.test(navigator.userAgent);
+  if (isAndroid) switchTab('android');
+  else animateSteps();
+});
+</script>
+</body>
+</html>
